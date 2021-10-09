@@ -8,11 +8,6 @@
 using namespace std;
 
 void WorldMap::loadMap(std::string filename) {
-    //values.push_back( { 0, 0, 0,0} ); // -------> x   sample map of size 4 by 4
-    //values.push_back( { 0,-1,-1,2} ); // |            inner vector define tiles in the x axis
-    //values.push_back( { 0,-1,-1,9} ); // |            outer vector define tiles in the z axis
-    //values.push_back( { 0, 0, 0,0} ); // v z          (lect4 slides for json)
-
     using namespace rapidjson;
     ifstream fis(filename);
     IStreamWrapper isw(fis);
@@ -43,19 +38,6 @@ void WorldMap::loadMap(std::string filename) {
     ceilColor[1] = d["ceilColor"][1].GetDouble();
     ceilColor[2] = d["ceilColor"][2].GetDouble();
     ceilColor[3] = d["ceilColor"][3].GetDouble();
-
-    /*std::cout << startingPosition.x << " " << startingPosition.y << " " << startingRotation << "\n";
-    std::cout << floorColor[0] << " " << floorColor[1] << " " << floorColor[2] << " " << floorColor[3] << "\n";
-    std::cout << ceilColor[0] << " " << ceilColor[1] << " " << ceilColor[2] << " " << ceilColor[3] << "\n";
-
-    for (size_t i = 0; i < values.size(); i++)
-    {
-        for (size_t j = 0; j < values[i].size(); j++)
-        {
-            std::cout << values[i][j] << ", ";
-        }
-        std::cout << "\n";
-    }*/
 }
 
 int WorldMap::getTile(int x, int y) {

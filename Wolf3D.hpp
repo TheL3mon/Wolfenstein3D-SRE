@@ -20,6 +20,8 @@ private:
     WorldMap map;
     std::shared_ptr<sre::Mesh> walls;
     std::shared_ptr<sre::Material> wallMaterial;
+    std::shared_ptr<sre::Material> ceilMaterial;
+    std::shared_ptr<sre::Material> floorMaterial;
     FirstPersonController fpsController;
     glm::vec4 floorColor;
     glm::vec4 ceilColor;

@@ -86,15 +86,7 @@ void Wolf3D::addCube(std::vector<glm::vec3>& vertexPositions, std::vector<glm::v
     int textureIndex = type*2;
     int textureIndexRow = textureIndex / 16;
     textureIndex = textureIndex % 16;
-    /*if (textureIndex % 16 == textureIndex)
-    {
-        textureIndexRow = 0;
-    }
-    else
-    {
-        textureIndexRow = (textureIndex / 16);
-        cout << textureIndexRow;
-    }*/
+
     glm::vec2 min = vec2(textureIndex * 65, (42 - textureIndexRow) * tileSizeWithBorder.y) / textureSize;
     glm::vec2 max = min + tileSize / textureSize;
     glm::vec2 minD = vec2((textureIndex+1) * 65, (42 - textureIndexRow) * tileSizeWithBorder.y) / textureSize;
@@ -122,6 +114,14 @@ void Wolf3D::init() {
             .build();
     wallMaterial->setTexture(texture);
 
+    //////
+    /*ceilMaterial = Shader::getUnlit()->createMaterial();
+    ceilMaterial->setColor(Color(map.getCeilColor()));
+
+    floorMaterial = Shader::getUnlit()->createMaterial();
+    floorMaterial->setColor(Color(map.getFloorColor()));*/
+    //////
+
     map.loadMap("level0.json");
 
     std::vector<glm::vec3> vertexPositions;
@@ -145,7 +145,7 @@ void Wolf3D::init() {
 }
 
 void Wolf3D::renderDebugBricks(RenderPass & renderPass){
-    static auto cube = Mesh::create().withCube(0.5f).build();
+    static auto cube = Mesh::create().withQuad(0.5f).build();
     static vector<shared_ptr<Material> > materials = {
             Shader::getUnlit()->createMaterial(),
             Shader::getUnlit()->createMaterial(),
