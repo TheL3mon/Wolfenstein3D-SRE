@@ -60,29 +60,23 @@ void Wolf3D::render() {
     ImGui::End();
 }
 
-// Creates a textured cube with a side length of 1 (e.g. from -0.5 to 0.5).
-// The cube must be centered at (x,0,z)
-// The texturing
 void Wolf3D::addCube(std::vector<glm::vec3>& vertexPositions, std::vector<glm::vec4>& textureCoordinates, int x, int z, int type){
-    // TODO implement this
-
-    // Incomplete implementation - creates two triangles in the xy-plane
     vertexPositions.insert(vertexPositions.end(),{
             //front
-            glm::vec3(0, 0, 0), glm::vec3(0.5, 0, 0), glm::vec3(0, 0.5, 0),
-            glm::vec3(0.5, 0.5, 0), glm::vec3(0, 0.5, 0),glm::vec3(0.5, 0, 0),
+            glm::vec3(0 + x, -0.5, 0 + z), glm::vec3(1 + x, -0.5, 0 + z), glm::vec3(0 + x, 0.5, 0 + z),
+            glm::vec3(1 + x, 0.5, 0 + z), glm::vec3(0 + x, 0.5, 0 + z),glm::vec3(1 + x, -0.5, 0 + z),
 
             //back
-            glm::vec3(0.5, 0, -0.5), glm::vec3(0, 0, -0.5), glm::vec3(0.5, 0.5, -0.5),
-            glm::vec3(0, 0.5, -0.5), glm::vec3(0.5, 0.5, -0.5), glm::vec3(0, 0, -0.5),
+            glm::vec3(1 + x, -0.5, -1 + z), glm::vec3(0 + x, -0.5, -1 + z), glm::vec3(1 + x, 0.5, -1 + z),
+            glm::vec3(0 + x, 0.5, -1 + z), glm::vec3(1 + x, 0.5, -1 + z), glm::vec3(0 + x, -0.5, -1 + z),
 
             //right
-            glm::vec3(0.5, 0, 0), glm::vec3(0.5, 0, -0.5), glm::vec3(0.5, 0.5, 0),
-            glm::vec3(0.5, 0.5, -0.5), glm::vec3(0.5, 0.5, 0), glm::vec3(0.5, 0, -0.5),
+            glm::vec3(1 + x, -0.5, 0 + z), glm::vec3(1 + x, -0.5, -1 + z), glm::vec3(1 + x, 0.5, 0 + z),
+            glm::vec3(1 + x, 0.5, -1 + z), glm::vec3(1 + x, 0.5, 0 + z), glm::vec3(1 + x, -0.5, -1 + z),
 
             //left
-            glm::vec3(0, 0, -0.5), glm::vec3(0, 0, 0), glm::vec3(0, 0.5, -0.5),
-            glm::vec3(0, 0.5, 0), glm::vec3(0, 0.5, -0.5), glm::vec3(0, 0, 0),
+            glm::vec3(0 + x, -0.5, -1 + z), glm::vec3(0 + x, -0.5, 0 + z), glm::vec3(0 + x, 0.5, -1 + z),
+            glm::vec3(0 + x, 0.5, 0 + z), glm::vec3(0 + x, 0.5, -1 + z), glm::vec3(0 + x, -0.5, 0 + z),
     });
 
     glm::vec2 textureSize(2048,4096);

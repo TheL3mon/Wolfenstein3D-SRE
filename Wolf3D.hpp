@@ -23,7 +23,7 @@ private:
     FirstPersonController fpsController;
     glm::vec4 floorColor;
     glm::vec4 ceilColor;
-    bool debugBricks = true;
+    bool debugBricks = false;
     bool lockRotation = false;
 };
 
