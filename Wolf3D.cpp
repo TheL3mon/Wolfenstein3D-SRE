@@ -13,9 +13,9 @@ Wolf3D::Wolf3D()
     r.init();
     init();
 
-    // Enable mouse lock
-     SDL_SetWindowGrab(r.getSDLWindow(), SDL_TRUE);
-     SDL_SetRelativeMouseMode(SDL_TRUE);
+    //Enable mouse lock
+    SDL_SetWindowGrab(r.getSDLWindow(), SDL_TRUE);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
 
 
     r.frameUpdate = [&](float deltaTime){

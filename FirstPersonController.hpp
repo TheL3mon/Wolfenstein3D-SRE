@@ -16,8 +16,6 @@ public:
 private:
     sre::Camera * camera;
 
-    // TODO you can use these to record the state of the keys and mouse movement
-    //  remember to initialize if you decide to use these as is
     bool fwd;
     bool bwd;
     bool left;

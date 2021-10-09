@@ -14,8 +14,12 @@ FirstPersonController::FirstPersonController(sre::Camera * camera)
     camera->setPerspectiveProjection(45,0.1f,1000);
     position = vec3(0,0,0);
     at = vec3(0, 0, -1);
+    fwd = false;
+    bwd = false;
+    left = false;
+    right = false;
+    xrel = 0;
 }
-
 
 void FirstPersonController::update(float deltaTime){
     float rotationRad = glm::radians(rotation);
@@ -25,19 +29,19 @@ void FirstPersonController::update(float deltaTime){
 
     if (fwd)
     {
-        position += (rotateY(vec3(0, 0, -1), rotationRad)) * deltaTime;
+        position += (rotateY(vec3(0, 0, -5), rotationRad)) * deltaTime;
     }
     if (bwd)
     {
-        position += (rotateY(vec3(0, 0, 1), rotationRad)) * deltaTime;
+        position += (rotateY(vec3(0, 0, 5), rotationRad)) * deltaTime;
     }
     if (left)
     {
-        position += (rotateY(vec3(-1, 0, 0), rotationRad)) * deltaTime;
+        position += (rotateY(vec3(-5, 0, 0), rotationRad)) * deltaTime;
     }
     if (right)
     {
-        position += (rotateY(vec3(1, 0, 0), rotationRad)) * deltaTime;
+        position += (rotateY(vec3(5, 0, 0), rotationRad)) * deltaTime;
     }
 }
 
