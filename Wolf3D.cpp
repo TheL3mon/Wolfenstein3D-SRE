@@ -83,11 +83,34 @@ void Wolf3D::addCube(std::vector<glm::vec3>& vertexPositions, std::vector<glm::v
     glm::vec2 tileSize(64,64);
     glm::vec2 tileSizeWithBorder(65,65);
 
-    glm::vec2 min = vec2(0,42*tileSizeWithBorder.y) / textureSize;
-    glm::vec2 max = min+tileSize / textureSize;
+    int textureIndex = type*2;
+    int textureIndexRow = textureIndex / 16;
+    textureIndex = textureIndex % 16;
+    /*if (textureIndex % 16 == textureIndex)
+    {
+        textureIndexRow = 0;
+    }
+    else
+    {
+        textureIndexRow = (textureIndex / 16);
+        cout << textureIndexRow;
+    }*/
+    glm::vec2 min = vec2(textureIndex * 65, (42 - textureIndexRow) * tileSizeWithBorder.y) / textureSize;
+    glm::vec2 max = min + tileSize / textureSize;
+    glm::vec2 minD = vec2((textureIndex+1) * 65, (42 - textureIndexRow) * tileSizeWithBorder.y) / textureSize;
+    glm::vec2 maxD = minD + tileSize / textureSize;
     textureCoordinates.insert(textureCoordinates.end(),{
+            glm::vec4(minD.x,minD.y,0,0), glm::vec4(maxD.x,minD.y,0,0), glm::vec4(minD.x,maxD.y,0,0),
+            glm::vec4(maxD.x,maxD.y,0,0), glm::vec4(minD.x,maxD.y,0,0), glm::vec4(maxD.x,minD.y,0,0),
+
+            glm::vec4(minD.x,minD.y,0,0), glm::vec4(maxD.x,minD.y,0,0), glm::vec4(minD.x,maxD.y,0,0),
+            glm::vec4(maxD.x,maxD.y,0,0), glm::vec4(minD.x,maxD.y,0,0), glm::vec4(maxD.x,minD.y,0,0),
+
             glm::vec4(min.x,min.y,0,0), glm::vec4(max.x,min.y,0,0), glm::vec4(min.x,max.y,0,0),
-            glm::vec4(max.x,max.y,0,0), glm::vec4(min.x,max.y,0,0), glm::vec4(max.x,min.y,0,0)
+            glm::vec4(max.x,max.y,0,0), glm::vec4(min.x,max.y,0,0), glm::vec4(max.x,min.y,0,0),
+            
+            glm::vec4(min.x,min.y,0,0), glm::vec4(max.x,min.y,0,0), glm::vec4(min.x,max.y,0,0),
+            glm::vec4(max.x,max.y,0,0), glm::vec4(min.x,max.y,0,0), glm::vec4(max.x,min.y,0,0),
     });
 }
 
